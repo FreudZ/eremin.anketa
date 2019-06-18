@@ -1,0 +1,94 @@
+
+.rb-box {
+
+}
+
+/* Custom Radio Button */
+
+.rb {
+  padding: 16px 0;
+  text-align: center;
+  background: rgba(255,255,255,.03);
+  border-radius: .3em;
+  width:100%;
+  min-height: 9px;
+}
+
+.rb-tab {
+  display: inline-block;
+  position: relative;
+  width: 18%;
+}
+.rb-tab input[type=radio]{
+	opacity:0;
+	display:none;
+}
+.error_text{
+	padding:15px;
+	
+}
+
+.rb-txt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: .9em;
+  color: rgba(170, 170, 170, 0.6);
+}
+.rb-tab-active .rb-txt {
+  color: #fff;
+}
+
+.rb-spot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  border: 2px solid rgba(170, 170, 170, 0.6);
+  border-radius: 100%;
+  cursor: pointer;
+  transition: ease .5s;
+}
+
+.rb-tab-active .rb-spot {
+  background: rgba(0, 102, 204,.6);
+  border: 2px solid rgba(0, 102, 204,.6);
+}
+
+/* Submit Button */
+.button-box {
+  padding: 10px 0;
+  text-align: center;
+}
+
+button {
+  display: inline-block;
+  width: 80%;
+  margin-top: 1.2em;
+  padding: 1em;
+  max-width: 220px;
+  font-size: 1.1em;
+  color: #D42D78;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: .15em;
+  background: white;
+  border: none;
+  outline: none;
+  border-radius: 5em;
+  box-shadow: 0 15px 20px -10px rgba(0, 0, 0, 0.3);
+  transition: 
+    color 0.6s, 
+    box-shadow 0.3s, 
+    transform 0.3s;
+  cursor: pointer;
+}
+
+button:hover {
+  box-shadow: 0 3px 5px -5px rgba(0, 0, 0, 0.3);
+  color: #6f6f6f;
+}

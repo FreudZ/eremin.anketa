@@ -1,0 +1,11 @@
+/*Menu icon*/
+.export_ok_menu_icon {
+    background: url(/bitrix/images/softinform.exportok/ok.ico) no-repeat center;
+}
+.export_ok_profiles_icon {
+    background: url(/bitrix/images/softinform.exportok/system.png) no-repeat center;
+}
+.border-double {
+    border-style: double;
+}
+
