@@ -1,5 +1,6 @@
 <?php
 	require $_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php";
+	use \Bitrix\Iblock\PropertyTable;
 ?>
 <?php
 	CModule::IncludeModule("iblock");
@@ -7,6 +8,39 @@
 		$ANKETA_IBLOCK = COption::GetOptionInt("eremin.anketa", "ANKETA_IBLOCK", 0);
 $ANKETA_ANSWERS_IBLOCK = COption::GetOptionInt("eremin.anketa", "ANKETA_ANSWERS_IBLOCK", 0);
 $ANKETA_CRITERIA_IBLOCK = COption::GetOptionInt("eremin.anketa", "ANKETA_CRITERIA_IBLOCK", 0);
+
+
+	$arIblockProps = array();
+
+	if(intval($ANKETA_ANSWERS_IBLOCK)>0) {
+   $rsProperty = \Bitrix\Iblock\PropertyTable::getList(array(
+	    'filter' => array(
+	        'IBLOCK_ID'=>$ANKETA_ANSWERS_IBLOCK,
+	        'ACTIVE'=>'Y',
+	        //'=PROPERTY_TYPE'=>\Bitrix\Iblock\PropertyTable::TYPE_LIST
+	    ),
+	    'select' => array(
+	        'ID',
+	        'NAME',
+	        'CODE',
+	    ),
+	));
+	// PROPERTY_TYPE:
+	// \Bitrix\Iblock\PropertyTable::TYPE_STRING - строка
+	// \Bitrix\Iblock\PropertyTable::TYPE_NUMBER - число
+	// \Bitrix\Iblock\PropertyTable::TYPE_LIST - список
+	// \Bitrix\Iblock\PropertyTable::TYPE_ELEMENT - привязка к элементу
+	// \Bitrix\Iblock\PropertyTable::TYPE_SECTION - привязка к разделу
+	// \Bitrix\Iblock\PropertyTable::TYPE_FILE - файл
+
+	while($arProperty=$rsProperty->fetch())
+	{
+			$arIblockProps[$arProperty["CODE"]] = $arProperty["ID"];
+	} //while
+
+   } //if(intval($Iblock_id)>0)
+
+
 		$el = new CIBlockElement;
 		$param1_id = intval($_POST["PARAM1_ID"]);
 		$param2_id = intval($_POST["PARAM2_ID"]);
@@ -32,16 +66,16 @@ $ANKETA_CRITERIA_IBLOCK = COption::GetOptionInt("eremin.anketa", "ANKETA_CRITERI
 		}
 		$num = 0;
 		foreach($arAnswers as $answer_id=>$answer_values){
-					$PROP[115]["n" . $num] = Array(
+					$PROP[$arIblockProps["ANSWERS"]]["n" . $num] = Array(
 						"VALUE" => $answer_id,
 						"DESCRIPTION" => serialize($answer_values));
 					$num++;
 		}
-		$PROP[116] = $_POST["ANKETA_ID"];
-		$PROP[114] = $_POST["FIO"];
-		$PROP[117] = $_POST["DOLGNOST"];
-		$PROP[118] = $_POST["PHONE"];
-		$PROP[119] = $_POST["EMAIL"];
+		$PROP[$arIblockProps["ANKETA_ID"]] = $_POST["ANKETA_ID"];
+		$PROP[$arIblockProps["FIO"]] = $_POST["FIO"];
+		$PROP[$arIblockProps["DOLGNOST"]] = $_POST["DOLGNOST"];
+		$PROP[$arIblockProps["PHONE"]] = $_POST["PHONE"];
+		$PROP[$arIblockProps["EMAIL"]] = $_POST["EMAIL"];
 
 		$arLoadProductArray = Array(
 			"IBLOCK_SECTION_ID" => false, // элемент лежит в корне раздела

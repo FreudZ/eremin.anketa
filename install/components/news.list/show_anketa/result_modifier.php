@@ -11,7 +11,7 @@
     	if($ar_result["CODE"]==$arParams["PARENT_SECTION_CODE"]){
     		$arAnketa = $ar_result;
     	} else{
-    		if($ar_result["IBLOCK_SECTION_ID"] == $arAnketa["ID"]) {
+    		if($ar_result["IBLOCK_SECTION_ID"] == $arAnketa["ID"] && $ar_result["DEPTH_LEVEL"]>1) {
     		  $arHeadings[$ar_result['ID']] = $ar_result;
     		}
 

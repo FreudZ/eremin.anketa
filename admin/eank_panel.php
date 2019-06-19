@@ -620,15 +620,17 @@ function GenExcelStart(){
 <?
 $tabControl->BeginNextTab();     ?>
    		<tr class="heading">
-			<td colspan="2"><?= GetMEssage("EANK_PANEL_ANKETS_LIST_HEADING") ?></td>
+			<td colspan="3"><?= GetMEssage("EANK_PANEL_ANKETS_LIST_HEADING") ?></td>
 		</tr>
 <?
   foreach($arAnketa as $anketa){ //Выводим общую информацию по анкетам
 ?>
 
  		<tr>
-			<td><?=GetMessage("EANK_PANEL_ANK_TAB_COMMMON_PARAMS_LINK")?> <span id="ankLincCopyText<?= $anketa["ID"] ?>"><b><?= $_SERVER["SERVER_NAME"] ?><?= $anketa["SECTION_PAGE_URL"] ?></b></span></td>
-			<td>    <button class="ui-btn ui-btn-primary ui-btn-xs" id="ankLincCopyBtn<?= $anketa["ID"] ?>"><?= GetMessage("COPY_TO_CLIPBOARD")?></button> <a class="ui-btn ui-btn-success ui-btn-xs" href="<?= $anketa["SECTION_PAGE_URL"] ?>" target="_blank"><?= GetMessage("OPEN_ANK_IN_NEW_TAB") ?></a>
+			<td><span style="color:#330099"><?= $anketa["NAME"] ?>:</span> </td>
+			<td><span id="ankLincCopyText<?= $anketa["ID"] ?>"><b><?= $_SERVER["SERVER_NAME"] ?><?= $anketa["SECTION_PAGE_URL"] ?></b></span></td>
+			<td>
+				   <button class="ui-btn ui-btn-primary ui-btn-xs" id="ankLincCopyBtn<?= $anketa["ID"] ?>"><?= GetMessage("COPY_TO_CLIPBOARD")?></button> <a class="ui-btn ui-btn-success ui-btn-xs" href="<?= $anketa["SECTION_PAGE_URL"] ?>" target="_blank"><?= GetMessage("OPEN_ANK_IN_NEW_TAB") ?></a>
 			 <script>
 			 BX.clipboard.bindCopyClick(
     BX('ankLincCopyBtn<?= $anketa["ID"] ?>'),
