@@ -1,5 +1,7 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
-<?//¬ файле component_epilog.php доступны:
+<?
+//use Bitrix\Main\Page\Asset;
+//¬ файле component_epilog.php доступны:
 /*
     $arParams - параметры, чтение/изменение не затрагивает одноименный член компонента.
     $arResult Ч результат, чтение/изменение не затрагивает одноименный член класса компонента.
@@ -13,5 +15,7 @@
     $templateData Ч обратите внимание, таким образом можно передать данные из template.php в файл component_epilog.php, причем эти данные закешируютс€ и будут доступны в component_epilog.php на каждом хите/
     $APPLICATION, $USER, $DB Ч глобальные переменные.*/?>
 <?php
+
  // $APPLICATION->AddHeadScript($templateFolder.'/js/jquery.validate.min.js');
+
 ?>

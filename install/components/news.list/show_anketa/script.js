@@ -37,11 +37,12 @@ function checkForm(){
   var error = false;
   $('.error_text').addClass('hidden');
   	$('#anketa td').removeClass('bg-danger');
-  $('.rb-tab').each(function(){
+  $('#anketa .rb-tab').each(function(){
 		 var option_name = $(this).find('.rb-txt').data('option-name');
 		 var $option = $('input:radio[name='+option_name+']:checked');
 		  if (!$option.val()){
 		  	error = true;
+			console.log('not val ='+option_name);
 			 $(this).parents('td').addClass('bg-danger');
 		  }
 
@@ -49,9 +50,10 @@ function checkForm(){
 
   });
 
-  $("input:text.required").each(function(indx, element){
+  $("#anketa input:text.required").each(function(indx, element){
     if(!$(element).val().length){
     	$(element).parents('.form-group').addClass('has-error');
+		console.log('input not val ='+$(element).attr('name'));
 		error = true;
     }
   });
@@ -67,7 +69,7 @@ function getRandomInRange(min, max) {
 
 
 function addTestData(){
-   $('.rb-tab').each(function(){
+   $('#anketa .rb-tab').each(function(){
 		 var option_name = $(this).find('.rb-txt').data('option-name');
 		 var $option = $('input:radio[name='+option_name+']');
 		 var value = getRandomInRange(0, 4);
@@ -79,7 +81,7 @@ function addTestData(){
 
   });
 
- $('input:text, textarea').each(function(){
+ $('#anketa input:text, textarea').each(function(){
 	 $(this).val('test data #'+getRandomInRange(0, 25536));
 
 
