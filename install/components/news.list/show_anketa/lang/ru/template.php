@@ -1,6 +1,7 @@
 <?
 $MESS["ANKETA_TABLE_CENTER_HEADER"] = "Оцениваемая характеристика";
 $MESS["ANKETA_INPUT_ORGANIZATION_PLACEHOLDER"] = "Наименование организации";
+$MESS["ANKETA_INPUT_SPECNUM_PLACEHOLDER"] = "Спецификация №";
 $MESS["ANKETA_INPUT_FIO_PLACEHOLDER"] = "Ф.И.О.";
 $MESS["ANKETA_INPUT_DOLGNOST_PLACEHOLDER"] = "Должность";
 $MESS["ANKETA_INPUT_PHONE_PLACEHOLDER"] = "Телефон";
