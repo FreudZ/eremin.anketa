@@ -116,10 +116,10 @@ while($ob = $res->GetNextElement()){
 //Собираем ответы и группируем по организациям
 
 function GetFullOrgList($res){
-	$result = array("ORG");
+	$result = array();
 	foreach($res as $element){
-	$result["ORG"][$element["NAME"]] = array();//Для объединения ответов в разрезе организации ключем принято считать имя организации
-	$result["ORG_NAMES"][$element["ID"]] = $element["NAME"];
+	$result["ORG"][$element["NAME"]] = $element["ID"];//array();//Для объединения ответов в разрезе организации ключем принято считать имя элемента
+	$result["ORG_NAMES"][$element["ID"]] = $element["PROPERTIES"]["ORGNAME"]["VALUE"]." (".$element["NAME"].")";
  }
 	return $result;
 }
@@ -141,6 +141,7 @@ while($ob = $res->GetNextElement()){ //Заполняем временный массив, что бы не дел
 
 $arFinalAnswersByOrg = array();
 $arFullOrgList = GetFullOrgList($arTmpArray);//Полный список организаций
+
 foreach($arTmpArray as $ktmp=>$arElement){
  foreach($arElement["PROPERTIES"]["ANSWERS"]["VALUE"] as $k=>$arAnswer){
  $anketsTable[$arElement["PROPERTIES"]["ANKETA_ID"]["VALUE"]]["QUESTIONS"][$arAnswer]["ORG"] = $arFullOrgList["ORG"];
@@ -365,7 +366,7 @@ function GenExcelStart(){
 						<?//foreach($arAnswers[$anketa["ID"]] as $answ_k=>$answ_val):?>
 						<?foreach($arFullOrgList["ORG"] as $org_k=>$org_id):?>
 						<th colspan="2" class="vertical_text">
-						  <?= $org_k ?>
+						  <?= $arFullOrgList["ORG_NAMES"][$org_id];//$org_k ?>
 						</th>
 						<?endforeach;?>
 						<th rowspan="2"><?= GetMessage('OPEN_ANK_TABLE_VCP') ?></th>
@@ -655,7 +656,7 @@ $(document).ready(function(){
 
 				var siteIndexPercent = i_org*100/2;
 				//siteIndexPercent = Math.min(Math.max(siteIndexPercent, 4), 98);
-				if($('#i_avg_table').data('index')<0){
+				if($('#i_avg_table').data('index')>0){
 					siteIndexPercent = 50+siteIndexPercent;
 				} else {
 					siteIndexPercent = 50-siteIndexPercent;
