@@ -78,7 +78,7 @@ Class AnketaTools {
 		$tmpcnt++;
 		if ($activeSheet == 0) {
 			foreach ($arFullOrgList["ORG"] as $org_k => $org_id) { //Заполняем шапку таблицы с названиями организаций
-				$objCurrentCell = $objWorkSheet->setCellValueByColumnAndRow($tmpcnt, $currentRow, $org_k, true);
+				$objCurrentCell = $objWorkSheet->setCellValueByColumnAndRow($tmpcnt, $currentRow, $arFullOrgList["ORG_NAMES"][$org_id], true);
 				$objCurrentCell->getStyle()->getAlignment()->setTextRotation(90)->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER); //Выравнивание по горизонтали
 				$rangeCurrCell = PHPExcel_Cell::stringFromColumnIndex($tmpcnt) . $currentRow . ":" . PHPExcel_Cell::stringFromColumnIndex($tmpcnt + 1) . $currentRow; //Символьный диапазон ячеек
 				$objCurrentCell = $objWorkSheet->mergeCells($rangeCurrCell);
@@ -94,7 +94,7 @@ Class AnketaTools {
 			}
 		} else {
 			foreach ($arFullOrgList["ORG"] as $org_k => $org_id) { //Заполняем шапку таблицы с названиями организаций  для раздельных листов
-				$objCurrentCell = $objWorkSheet->setCellValueByColumnAndRow($tmpcnt, $currentRow, $org_k, true);
+				$objCurrentCell = $objWorkSheet->setCellValueByColumnAndRow($tmpcnt, $currentRow, $arFullOrgList["ORG_NAMES"][$org_id], true);
 				$objCurrentCell->getStyle()->getAlignment()->setTextRotation(90)->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER); //Выравнивание по горизонтали
 				$objCurrentCell->getStyle()->applyFromArray($styleBorderMedium); //Рамка
 				$objCurrentCell->getStyle()->getAlignment()->setWrapText(true); //Перенос по словам

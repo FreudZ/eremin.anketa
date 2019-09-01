@@ -76,12 +76,13 @@ $ANKETA_CRITERIA_IBLOCK = COption::GetOptionInt("eremin.anketa", "ANKETA_CRITERI
 		$PROP[$arIblockProps["DOLGNOST"]] = $_POST["DOLGNOST"];
 		$PROP[$arIblockProps["PHONE"]] = $_POST["PHONE"];
 		$PROP[$arIblockProps["EMAIL"]] = $_POST["EMAIL"];
+		$PROP[$arIblockProps["ORGNAME"]] = $_POST["ORGANIZATION"];
 
 		$arLoadProductArray = Array(
 			"IBLOCK_SECTION_ID" => false, // элемент лежит в корне раздела
 			"IBLOCK_ID" => $ANKETA_ANSWERS_IBLOCK,
 			"PROPERTY_VALUES" => $PROP,
-			"NAME" => $_POST["ORGANIZATION"],
+			"NAME" => $_POST["SPECNUM"],
 			"ACTIVE" => "Y", // активен
 			"PREVIEW_TEXT" => $_POST["COMMENTS"],
 			//"DETAIL_TEXT"    => "текст для детального просмотра",
