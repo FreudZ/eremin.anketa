@@ -12,7 +12,8 @@ define("NEED_AUTH", true);
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-
+$this->addExternalCss($templateFolder."/css/bootstrap.min.css");
+$this->addExternalCss($templateFolder."/css/style.css");
 ?>
 <div class="anketa-box">
 <div class="container-fluid">
@@ -31,14 +32,9 @@ $this->setFrameMode(true);
 	<input type="hidden" value="<?= $anketa_param2 ?>" name="PARAM2_ID">
 <div class="container-fluid">
  <div class="row">
- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+ <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
  	<div class="form-group">
  		<input type="text" class="form-control required" name="ORGANIZATION" placeholder="* <?= GetMessage('ANKETA_INPUT_ORGANIZATION_PLACEHOLDER') ?>">
- 	</div>
- </div>
- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
- 	<div class="form-group">
- 		<input type="text" class="form-control required" name="SPECNUM" placeholder="* <?= GetMessage('ANKETA_INPUT_SPECNUM_PLACEHOLDER') ?>">
  	</div>
  </div>
  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -135,10 +131,7 @@ $this->setFrameMode(true);
   	<div class="error_text hidden bg-danger text-danger ">
 		 <?= GetMessage('ANKETA_ERROR_TEXT'); ?>
   	</div>
-	<div style="display:none;">
-	 <div class="template success_message"><?= $arResult["ANKETA"]["UF_SUCCESS_MESSAGE"] ?></div>
-	</div>
-
+	<div class="template success_message"><?= $arResult["ANKETA"]["UF_SUCCESS_MESSAGE"] ?></div>
   <div class="form-group text-center">
   <input class="btn btn-primary" id="submit_button" type="button" value="<?= GetMessage("ANKETA_BUTTON_SUBMIT_TEXT") ?>">
   </div>
@@ -149,9 +142,9 @@ $this->setFrameMode(true);
 </div>
 </div>
 </form>
-<?/*if($GLOBALS["USER"]->IsAdmin()): ?>
+<? if($GLOBALS["USER"]->IsAdmin()): ?>
 <input class="btn btn-primary" id="addData_button" type="button" value="Заполнить тестовыми данными" >
-<?endif;*/?>
+<?endif;?>
  <div class="results"></div>
  </div> 
  <script>

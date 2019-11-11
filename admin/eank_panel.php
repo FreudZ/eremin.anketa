@@ -75,11 +75,14 @@ $anketsTable = array();
 	 $arAnketa = array();
 	 $arHeadings = array();
 	 $ank_cnt = 1;
+
     while($ar_result = $db_list->GetNext())
     {
 		  $arAnketa[$ar_result["ID"]] = $ar_result;
 		  //$anketaTabs[] = array("DIV" => "ank_edit".$ank_cnt, "TAB" => GetMessage("EANK_PANEL_ANK_TAB", array("#ANKETA#"=>$ar_result["NAME"])), "ICON"=>"main_user_edit", "TITLE"=>"");
 		  $ank_cnt++;
+
+
 		  //Таблица для построения вывода данных
 		  $anketsTable[$ar_result["ID"]] = array("NAME"=>$ar_result["NAME"], "COLOR"=>$ar_result["UF_COLOR"], "QUESTIONS"=>array());
 
